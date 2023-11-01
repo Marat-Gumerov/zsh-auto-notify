@@ -52,10 +52,6 @@ function _auto_notify_message() {
     if [[ "$platform" == "Linux" ]]; then
         local urgency="normal"
         local transient="--hint=int:transient:1"
-        if [[ "$exit_code" != "0" ]]; then
-            urgency="critical"
-            transient=""
-        fi
         notify-send "$title" "$body" --app-name=zsh $transient "--urgency=$urgency" "--expire-time=$AUTO_NOTIFY_EXPIRE_TIME"
     elif [[ "$platform" == "Darwin" ]]; then
         osascript \
